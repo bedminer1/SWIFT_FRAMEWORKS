@@ -12,15 +12,20 @@ struct FrameworkGrid: View {
                                GridItem(.flexible()),
                                GridItem(.flexible())]
     var body: some View {
-        LazyVGrid(columns: columns) {
-            FrameworkTitle(name: "App Clips", imageName: "app-clip")
-            FrameworkTitle(name: "App Clips", imageName: "app-clip")
-            FrameworkTitle(name: "App Clips", imageName: "app-clip")
-            FrameworkTitle(name: "App Clips", imageName: "app-clip")
+        NavigationView {
+            ScrollView {
+                LazyVGrid(columns: columns) {
+                    ForEach(MockData.frameworks) { framework in
+                        FrameworkTitle(framework: framework)
+                    }
+                }
+            }
+            .navigationTitle("Apple Frameworks")
         }
     }
 }
 
 #Preview {
     FrameworkGrid()
+        .preferredColorScheme(.dark)
 }

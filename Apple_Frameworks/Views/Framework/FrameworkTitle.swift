@@ -26,5 +26,5 @@ struct FrameworkTitle: View {
 }
 
 #Preview {
-    FrameworkTitle(framework: MockData.frameworks[0])
+    FrameworkTitle(framework: MockData.sampleFramework)
 }

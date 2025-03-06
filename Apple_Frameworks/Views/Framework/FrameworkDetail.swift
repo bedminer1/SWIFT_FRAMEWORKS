@@ -14,17 +14,7 @@ struct FrameworkDetail: View {
     
     var body: some View {
         VStack {
-            HStack {
-                Spacer()
-                Button {
-                    isShowingDetailView = false
-                } label: {
-                    Image(systemName: "xmark")
-                        .foregroundColor(Color(.label))
-                        .imageScale(.large)
-                        .frame(width: 44, height: 44)
-                }
-            }
+            XDismissButton(isShowingDetailView: $isShowingDetailView)
             
             Spacer()
             FrameworkTitle(framework: framework)
@@ -41,7 +31,7 @@ struct FrameworkDetail: View {
                 AFButton(title: "Learn More")
             }
         }
-        .sheet(isPresented: $isShowingSafariView, content: {
+        .fullScreenCover(isPresented: $isShowingSafariView, content: {
             Safari(url: URL(string: framework.urlString)!)
         })
     }

@@ -25,6 +25,7 @@ struct FrameworkGrid: View {
             .navigationTitle("Apple Frameworks")
             .sheet(isPresented: $viewModel.isShowingDetailView) {
                 FrameworkDetail(framework: viewModel.selectedFramework!,
+                                isList: false,
                                 isShowingDetailView: $viewModel.isShowingDetailView)
             }
         }

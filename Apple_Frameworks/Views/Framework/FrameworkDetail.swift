@@ -9,12 +9,15 @@ import SwiftUI
 
 struct FrameworkDetail: View {
     var framework: Framework
+    var isList: Bool
     @Binding var isShowingDetailView: Bool
     @State private var isShowingSafariView: Bool = false
     
     var body: some View {
         VStack {
-            XDismissButton(isShowingDetailView: $isShowingDetailView)
+            if !isList {
+                XDismissButton(isShowingDetailView: $isShowingDetailView)
+            }
             
             Spacer()
             FrameworkTitle(framework: framework)
@@ -39,6 +42,7 @@ struct FrameworkDetail: View {
 
 #Preview {
     FrameworkDetail(framework: MockData.sampleFramework,
+                    isList: false,
                     isShowingDetailView: .constant(false))
         .preferredColorScheme(.dark)
 }
